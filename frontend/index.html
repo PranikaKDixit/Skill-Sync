@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Resume Matcher</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Student Portal</h1>
+            <p>Check how well your resume matches a job description.</p>
+
+            <a href="recruiter.html" class="nav-link">
+                Go to Recruiter Portal →
+            </a>
+        </header>
+
+        <div class="card">
+
+            <h2>Upload Resume</h2>
+
+            <input
+                type="file"
+                id="resumeFile"
+                accept=".pdf"
+            >
+
+            <p id="fileName" class="file-name"></p>
+
+            <h2>Job Description</h2>
+
+            <textarea
+                id="jobDescription"
+                placeholder="Paste job description here..."
+                rows="10"
+            ></textarea>
+
+            <button id="matchButton" onclick="calculateMatch()">
+                Calculate Match
+            </button>
+
+            <!-- Loading -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Processing your resume...</p>
+            </div>
+
+            <!-- Error -->
+            <div id="errorMessage" class="error hidden"></div>
+
+            <!-- Result -->
+            <div id="result" class="result hidden">
+
+                <h2>Match Result</h2>
+
+                <div class="score">
+                    <span id="matchScore">0%</span>
+                </div>
+
+                <p>Resume Match Score</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
