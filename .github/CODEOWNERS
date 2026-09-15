@@ -1,0 +1,22 @@
+# ==========================================
+# Skill-Sync Code Ownership
+# (Replace with their actual GitHub usernames)
+# ==========================================
+
+# Backend Team (2 people)
+/backend/           @Navagya @preetika260606
+
+# Frontend
+/frontend/          @Kashish-nigam08
+
+# Machine Learning
+/ml/                @PranikaKDixit
+
+# Data Collection
+/data-collection/   @noorbano2312150
+
+# PDF Parsing
+/pdf-parsing/       @Pragati0508
+
+# Global Fallback (You)
+*                   @PranikaKDixit
