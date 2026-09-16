@@ -35,12 +35,12 @@ ml/data/*
 # Uploaded, scraped, and collected local data
 backend/uploads/
 backend/temp/
-data-collection/raw_data/
-data-collection/scraped/
-data-collection/job_description/*
-!data-collection/job_description/.gitkeep
-data-collection/resume/*
-!data-collection/resume/.gitkeep
+data/raw_data/
+data/scraped/
+data/job_descriptions/*
+!data/job_descriptions/.gitkeep
+data/resumes/*
+!data/resumes/.gitkeep
 
 # Runtime files, logs, and local databases
 *.log

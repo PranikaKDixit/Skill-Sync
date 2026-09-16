@@ -1,22 +1,23 @@
+@"
 # ==========================================
 # Skill-Sync Code Ownership
-# (Replace with their actual GitHub usernames)
 # ==========================================
 
-# Backend Team (2 people)
-/backend/           @Navagya @preetika260606
+# Backend Team
+/backend/           @Navagya @preetika260606 @PranikaKDixit
 
 # Frontend
-/frontend/          @Kashish-nigam08
+/frontend/          @Kashish-nigam08 @PranikaKDixit
 
 # Machine Learning
 /ml/                @PranikaKDixit
 
 # Data Collection
-/data-collection/   @noorbano2312150
+/data/              @noorbano2312150 @PranikaKDixit
 
 # PDF Parsing
-/pdf-parsing/       @Pragati0508
+/pdf_parsing/       @Pragati0508 @PranikaKDixit
 
-# Global Fallback (You)
+# Global Fallback
 *                   @PranikaKDixit
+"@ | Out-File -FilePath .github/CODEOWNERS -Encoding utf8 -Force

@@ -1,14 +1,20 @@
 from typing import Annotated
-
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
 import os
+import sys
 import uuid
+from pathlib import Path
 
-from pdf_parser import extract_text_from_pdf
-from matching_engine import calculate_match
+# Add project root to Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+# Import from actual modules (no copies!)
+from ml.matching_engine import calculate_match
+from pdf_parsing.pdf_parser import extract_text_from_pdf
 
 
 app = FastAPI(
@@ -17,6 +23,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ... rest of the file stays the same
 app.openapi_version = "3.0.3"
 
 def custom_openapi():
@@ -296,3 +303,109 @@ async def match_bulk(
 
         "results": results
     }
+
+# -------------------------
+# MATCH SINGLE (For Student Portal)
+# -------------------------
+
+@app.post("/match-single")
+async def match_single(
+    resume_file: Annotated[UploadFile, File(...)],
+    job_description: Annotated[str, Form(...)]
+):
+    """
+    Match a single resume against a job description.
+    Used by the Student Portal.
+    """
+
+    # -------------------------
+    # 1. Validate file
+    # -------------------------
+
+    if not resume_file:
+        raise HTTPException(
+            status_code=400,
+            detail="No resume file uploaded"
+        )
+
+    # -------------------------
+    # 2. Check file type
+    # -------------------------
+
+    if resume_file.content_type != "application/pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="File must be a PDF"
+        )
+
+    # -------------------------
+    # 3. Validate JD
+    # -------------------------
+
+    if not job_description.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Job description is required"
+        )
+
+    # -------------------------
+    # 4. Generate unique filename
+    # -------------------------
+
+    unique_name = f"{uuid.uuid4()}_{resume_file.filename}"
+    file_path = os.path.join(UPLOAD_DIR, unique_name)
+
+    try:
+        # -------------------------
+        # 5. Save PDF temporarily
+        # -------------------------
+
+        file_content = await resume_file.read()
+        with open(file_path, "wb") as buffer:
+            buffer.write(file_content)
+
+        # -------------------------
+        # 6. Extract resume text
+        # -------------------------
+
+        resume_text = extract_text_from_pdf(file_path)
+
+        if not resume_text:
+            raise HTTPException(
+                status_code=400,
+                detail="Could not extract text from PDF"
+            )
+
+        # -------------------------
+        # 7. Calculate match
+        # -------------------------
+
+        match_result = calculate_match(resume_text, job_description)
+
+        # -------------------------
+        # 8. Return result
+        # -------------------------
+
+        return {
+            "match_score": match_result["score"],
+            "matched_skills": match_result["matched_skills"],
+            "missing_skills": match_result["missing_skills"]
+        }
+
+    except HTTPException:
+        raise
+
+    except Exception as e:
+        print(f"Error processing {resume_file.filename}: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error processing resume: {str(e)}"
+        )
+
+    finally:
+        # -------------------------
+        # 9. Delete temporary PDF
+        # -------------------------
+
+        if os.path.exists(file_path):
+            os.remove(file_path)

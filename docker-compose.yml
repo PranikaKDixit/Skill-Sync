@@ -1,0 +1,38 @@
+﻿services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: skillsync-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./ml:/app/ml                      # Mount ML module
+      - ./pdf_parsing:/app/pdf_parsing    # Mount PDF parsing module
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app                   # Set Python path
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - skillsync-network
+
+  frontend:
+    image: nginx:alpine
+    container_name: skillsync-frontend
+    ports:
+      - "5173:80"
+    volumes:
+      - ./frontend/index.html:/usr/share/nginx/html/index.html
+      - ./frontend/recruiter.html:/usr/share/nginx/html/recruiter.html
+      - ./frontend/script.js:/usr/share/nginx/html/script.js
+      - ./frontend/style.css:/usr/share/nginx/html/style.css
+    networks:
+      - skillsync-network
+    depends_on:
+      - backend
+
+networks:
+  skillsync-network:
+    driver: bridge
