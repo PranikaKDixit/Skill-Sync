@@ -88,23 +88,25 @@ Containerization
 
 Docker & Docker Compose
 
-📸 Screenshots
+## 📸 Screenshots
 
-Student Portal
+### Student Portal
 
 The Student Portal allows students to upload their resume, enter a job description, and view the matching result.
 
+![Student Portal](docs/screenshots/student-portal.png)
 
-
-Recruiter Portal
+### Recruiter Portal
 
 The Recruiter Portal allows recruiters to upload multiple resumes and compare candidates based on their matching scores.
 
+![Recruiter Portal](docs/screenshots/recruiter-portal.png)
 
-
-API Documentation
+### API Documentation
 
 SkillSync provides interactive API documentation through FastAPI Swagger UI.
+
+![Swagger API](docs/screenshots/swagger-api.png)
 
 
 
@@ -179,11 +181,16 @@ Skill-Sync/
 
 👥 Contributors
 
-Pranika.K.Dixit
-Preetika Gupta
+Pranika Dixit
+
 Navagya Singh
+
+Preetika Gupta
+
 Pragati Patel
-Kashish Nigam 
+
+kashish Nigam
+
 Noor Bano
 
 📄 License
