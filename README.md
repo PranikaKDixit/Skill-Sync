@@ -162,22 +162,49 @@ To stop the application, run:
 
 docker compose down
 
-📂 Project Structure
+## 📂 Project Structure
 
+```text
 Skill-Sync/
 │
-├── backend/              # FastAPI backend
-├── frontend/             # Student and recruiter portals
-├── ml/                   # Matching engine
-├── pdf_parsing/          # PDF processing
-├── data/                 # Project data
+├── .github/
+│   └── workflows/              # GitHub configuration/workflows
+│
+├── .trunk/                     # Trunk configuration
+│
+├── backend/                    # FastAPI backend
+│   ├── Dockerfile
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── __init__.py
+│   └── .gitkeep
+│
+├── frontend/                   # Student & recruiter portals
+│   ├── index.html
+│   ├── recruiter.html
+│   ├── script.js
+│   └── style.css
+│
+├── ml/                         # Resume-job matching logic
+│
+├── pdf_parsing/                # PDF resume processing
+│
+├── data/                       # Project data
+│   ├── job_descriptions/
+│   └── resumes/
 │
 ├── docs/
-│   └── screenshots/      # Application screenshots
+│   └── screenshots/            # Project screenshots
+│       ├── student-portal.png
+│       ├── recruiter-portal.png
+│       └── swagger-api.png
 │
-├── docker-compose.yml
-├── README.md
-└── Docker configuration
+├── docker-compose.yml          # Docker services configuration
+├── index.html                  # Root student portal
+├── recruiter.html              # Root recruiter portal
+├── script.js                   # Root frontend script
+├── style.css                   # Root frontend styles
+└── README.md                   # Project documentation
 
 👥 Contributors
 
