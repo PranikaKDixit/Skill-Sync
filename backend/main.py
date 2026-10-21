@@ -3,7 +3,7 @@ SkillSync Backend — FastAPI server.
 Handles resume upload, JD matching (baseline + enhanced).
 """
 import os
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from fastapi import FastAPI, UploadFile, File, Form, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 
@@ -35,7 +35,7 @@ def health():
 async def match_single(
     resume_file: UploadFile = File(...),
     job_description: str = Form(...),
-    mode: str = Form("baseline"),
+    mode: str = Query("baseline"),
 ):
     # Validate file size
     content = await resume_file.read()
@@ -137,7 +137,7 @@ from ml.recommendations import generate_recommendations
 async def analyze(
     resume_file: UploadFile = File(...),
     job_description: str = Form(...),
-    mode: str = Form("enhanced"),
+    mode: str = Query("enhanced"),
 ):
     """
     Full analysis endpoint for the dashboard.
