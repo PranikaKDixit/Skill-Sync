@@ -1,390 +1,352 @@
-// ==========================================
-// BACKEND API URL
-// ==========================================
+// ============================================================
+// SkillSync Frontend — Student + Recruiter Dashboards
+// ============================================================
 
-const API_URL = "http://localhost:8000";
+// Chart instances (for cleanup on re-render)
+let gaugeChartInstance = null;
+let breakdownChartInstance = null;
+let radarChartInstance = null;
+let distributionChartInstance = null;
+let skillAvailChartInstance = null;
 
+// ============================================================
+// STUDENT PORTAL
+// ============================================================
+document.getElementById("matchForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById("analyzeBtn");
+    btn.textContent = "Analyzing...";
+    btn.disabled = true;
 
-// ==========================================
-// STUDENT PAGE — POST /match-single
-// ==========================================
-
-async function calculateMatch() {
-    const fileInput = document.getElementById("resumeFile");
-    const jobDescription = document.getElementById("jobDescription").value.trim();
-    const button = document.getElementById("matchButton");
-    const loading = document.getElementById("loading");
-    const result = document.getElementById("result");
-    const error = document.getElementById("errorMessage");
-    const warning = document.getElementById("warningMessage");
-    const score = document.getElementById("matchScore");
-
-    // Clear previous
-    error.classList.add("hidden");
-    warning.classList.add("hidden");
-    result.classList.add("hidden");
-
-    // Validate
-    if (fileInput.files.length === 0) {
-        showError(error, "Please upload a resume");
-        return;
-    }
-
-    const file = fileInput.files[0];
-
-    if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
-        showError(error, "Please upload PDF file only");
-        return;
-    }
-
-    // Check file size client-side
-    if (file.size > 5 * 1024 * 1024) {
-        showError(error, "File exceeds 5MB limit");
-        return;
-    }
-
-    if (!jobDescription) {
-        showError(error, "Please paste job description");
-        return;
-    }
-
-    // Build request
     const formData = new FormData();
-    formData.append("resume_file", file);
-    formData.append("job_description", jobDescription);
-
-    button.disabled = true;
-    loading.classList.remove("hidden");
+    formData.append("resume_file", document.getElementById("resumeFile").files[0]);
+    formData.append("job_description", document.getElementById("jobDescription").value);
+    formData.append("mode", "enhanced");
 
     try {
-        const response = await fetch(`${API_URL}/match-single`, {
-            method: "POST",
-            body: formData,
-        });
+        const res = await fetch("/analyze", { method: "POST", body: formData });
+        const data = await res.json();
 
-        if (!response.ok) {
-            const errData = await response.json().catch(() => null);
-            throw new Error(errData?.detail || `Server returned ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Student API Response:", data);
-
-        if (data.match_score === undefined) {
-            throw new Error("Invalid response from backend");
-        }
-
-        // Show warning if present
         if (data.warning) {
-            warning.textContent = `⚠️ ${data.warning}`;
-            warning.classList.remove("hidden");
+            const w = document.getElementById("warning");
+            w.textContent = "⚠️ " + data.warning;
+            w.style.display = "block";
         }
 
-        // Display score
-        score.textContent = `${data.match_score}%`;
-
-        // Display breakdown
-        renderBreakdown(data.breakdown);
-
-        // Display matched skills
-        renderSkillTags("matchedSection", "matchedSkills", data.matched_skills, "matched");
-
-        // Display missing skills
-        renderSkillTags("missingSection", "missingSkills", data.missing_skills, "missing");
-
-        result.classList.remove("hidden");
-
+        renderStudentDashboard(data);
     } catch (err) {
-        console.error(err);
-        showError(error, err.message || "Something went wrong. Try again.");
+        alert("Error: " + err.message);
     } finally {
-        loading.classList.add("hidden");
-        button.disabled = false;
+        btn.textContent = "Analyze Match";
+        btn.disabled = false;
+    }
+});
+
+function renderStudentDashboard(data) {
+    document.getElementById("dashboard").style.display = "block";
+
+    // 1. Gauge Chart
+    renderGauge(data.score);
+
+    // 2. Breakdown Bar Chart
+    renderBreakdown(data.breakdown);
+
+    // 3. Radar Chart (skill categories)
+    if (data.skill_categories && Object.keys(data.skill_categories).length > 0) {
+        renderRadar(data.skill_categories);
+    }
+
+    // 4. Skill Tags
+    renderSkillTags("matchedSkills", data.matched_skills || [], "matched");
+    renderSkillTags("missingSkills", data.missing_skills || [], "missing");
+
+    // 5. Inferred Skills
+    if (data.inferred_skills && data.inferred_skills.length > 0) {
+        document.getElementById("inferredRow").style.display = "flex";
+        renderInferredSkills(data.inferred_skills);
+    }
+
+    // 6. Credibility Table
+    if (data.credibility && Object.keys(data.credibility).length > 0) {
+        document.getElementById("credibilityRow").style.display = "flex";
+        renderCredibility(data.credibility);
+    }
+
+    // 7. Recommendations
+    if (data.recommendations && data.recommendations.length > 0) {
+        document.getElementById("recsRow").style.display = "flex";
+        renderRecommendations(data.recommendations);
     }
 }
 
+function renderGauge(score) {
+    document.getElementById("scoreValue").textContent = score + " / 100";
+    const ctx = document.getElementById("gaugeChart").getContext("2d");
+    if (gaugeChartInstance) gaugeChartInstance.destroy();
 
-// ==========================================
-// RENDER SCORE BREAKDOWN BARS
-// ==========================================
+    const color = score >= 70 ? "#22c55e" : score >= 40 ? "#f59e0b" : "#ef4444";
+    gaugeChartInstance = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            datasets: [{
+                data: [score, 100 - score],
+                backgroundColor: [color, "#e5e7eb"],
+                borderWidth: 0,
+            }]
+        },
+        options: {
+            cutout: "75%",
+            rotation: -90,
+            circumference: 180,
+            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+            responsive: false,
+        }
+    });
+}
 
 function renderBreakdown(breakdown) {
-    const container = document.getElementById("breakdownBars");
-    container.innerHTML = "";
+    const ctx = document.getElementById("breakdownChart").getContext("2d");
+    if (breakdownChartInstance) breakdownChartInstance.destroy();
 
-    if (!breakdown) return;
+    const labels = Object.keys(breakdown).map(k =>
+        k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+    );
+    const values = Object.values(breakdown);
+    const colors = ["#3b82f6", "#8b5cf6", "#06b6d4", "#f59e0b", "#ef4444", "#22c55e"];
 
-    // Friendly names for components
-    const labels = {
-        keyword: "Keyword Match",
-        skill: "Skill Match",
-        tfidf: "TF-IDF Similarity",
-        inference: "Skill Inference",
-        credibility: "Credibility",
-        semantic: "Semantic Match",
-    };
-
-    for (const [key, value] of Object.entries(breakdown)) {
-        // Skip zero-value placeholders
-        if (value === 0 && (key === "inference" || key === "credibility" || key === "semantic")) {
-            continue;
+    breakdownChartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Points",
+                data: values,
+                backgroundColor: colors.slice(0, labels.length),
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            indexAxis: "y",
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true, max: 30 } },
+            responsive: true,
         }
-
-        const label = labels[key] || key;
-        const barWidth = Math.min(value, 100);
-
-        const barHTML = `
-            <div class="breakdown-row">
-                <span class="breakdown-label">${label}</span>
-                <div class="breakdown-bar-bg">
-                    <div class="breakdown-bar-fill" style="width: ${barWidth}%"></div>
-                </div>
-                <span class="breakdown-value">${value}%</span>
-            </div>
-        `;
-        container.insertAdjacentHTML("beforeend", barHTML);
-    }
+    });
 }
 
+function renderRadar(categories) {
+    const ctx = document.getElementById("radarChart").getContext("2d");
+    if (radarChartInstance) radarChartInstance.destroy();
 
-// ==========================================
-// RENDER SKILL TAGS
-// ==========================================
+    const labels = Object.keys(categories);
+    const coverage = labels.map(l => categories[l].coverage);
 
-function renderSkillTags(sectionId, containerId, skills, type) {
-    const section = document.getElementById(sectionId);
+    radarChartInstance = new Chart(ctx, {
+        type: "radar",
+        data: {
+            labels: labels.map(l => l.length > 15 ? l.slice(0, 14) + "…" : l),
+            datasets: [{
+                label: "Coverage %",
+                data: coverage,
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                borderColor: "#3b82f6",
+                pointBackgroundColor: "#3b82f6",
+            }]
+        },
+        options: {
+            scales: { r: { beginAtZero: true, max: 100 } },
+            plugins: { legend: { display: false } },
+            responsive: true,
+        }
+    });
+}
+
+function renderSkillTags(containerId, skills, type) {
     const container = document.getElementById(containerId);
-
-    if (!skills || skills.length === 0) {
-        section.classList.add("hidden");
+    container.innerHTML = "";
+    if (skills.length === 0) {
+        container.innerHTML = `<span class="skill-tag ${type}">None</span>`;
         return;
     }
-
-    container.innerHTML = "";
-
-    skills.forEach(skill => {
+    skills.forEach(s => {
         const tag = document.createElement("span");
         tag.className = `skill-tag ${type}`;
-        tag.textContent = skill;
+        tag.textContent = s;
         container.appendChild(tag);
     });
-
-    section.classList.remove("hidden");
 }
 
+function renderInferredSkills(inferred) {
+    const container = document.getElementById("inferredSkills");
+    container.innerHTML = "";
+    inferred.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "inferred-item";
+        const confClass = item.confidence_label === "High" ? "conf-high"
+            : item.confidence_label === "Medium" ? "conf-medium" : "conf-low";
+        div.innerHTML = `
+            <strong>${item.skill}</strong>
+            <span class="conf-badge ${confClass}">${item.confidence_label} (${(item.confidence * 100).toFixed(0)}%)</span>
+            <span class="evidence">Evidence: ${item.evidence.join(", ")}</span>
+        `;
+        container.appendChild(div);
+    });
+}
 
-// ==========================================
-// RECRUITER PAGE — POST /match-bulk
-// ==========================================
-
-async function rankCandidates() {
-    const fileInput = document.getElementById("resumeFiles");
-    const jobDescription = document.getElementById("recruiterJobDescription").value.trim();
-    const button = document.getElementById("rankButton");
-    const loading = document.getElementById("recruiterLoading");
-    const result = document.getElementById("recruiterResult");
-    const error = document.getElementById("recruiterError");
-    const table = document.getElementById("resultsTable");
-
-    error.classList.add("hidden");
-    result.classList.add("hidden");
-    table.innerHTML = "";
-
-    // Validate
-    if (fileInput.files.length === 0) {
-        showError(error, "Please upload at least one resume");
-        return;
+function renderCredibility(credibility) {
+    const container = document.getElementById("credibilityTable");
+    let html = `<table class="cred-table">
+        <thead><tr><th>Skill</th><th>Score</th><th>Label</th><th>Source</th><th>Signals</th></tr></thead><tbody>`;
+    for (const [skill, info] of Object.entries(credibility)) {
+        const labelClass = info.label === "High" ? "conf-high"
+            : info.label === "Medium" ? "conf-medium" : "conf-low";
+        html += `<tr>
+            <td><strong>${skill}</strong></td>
+            <td>${(info.score * 100).toFixed(0)}%</td>
+            <td><span class="conf-badge ${labelClass}">${info.label}</span></td>
+            <td>${info.source}</td>
+            <td>${(info.signals || []).join("; ")}</td>
+        </tr>`;
     }
+    html += "</tbody></table>";
+    container.innerHTML = html;
+}
 
-    for (let file of fileInput.files) {
-        if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
-            showError(error, "Please upload PDF files only");
-            return;
-        }
-        if (file.size > 5 * 1024 * 1024) {
-            showError(error, `File '${file.name}' exceeds 5MB limit`);
-            return;
-        }
-    }
+function renderRecommendations(recs) {
+    const container = document.getElementById("recommendations");
+    container.innerHTML = "";
+    recs.forEach(r => {
+        const div = document.createElement("div");
+        div.className = `rec-card priority-${r.priority}`;
+        div.innerHTML = `
+            <div class="rec-priority">${r.priority}</div>
+            <h4>${r.title}</h4>
+            <p>${r.description}</p>
+            ${r.resource_url ? `<a href="${r.resource_url}" target="_blank">📚 ${r.resource_name}</a>` : ""}
+        `;
+        container.appendChild(div);
+    });
+}
 
-    if (!jobDescription) {
-        showError(error, "Please paste job description");
-        return;
-    }
+// ============================================================
+// RECRUITER PORTAL
+// ============================================================
+document.getElementById("bulkForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById("screenBtn");
+    btn.textContent = "Screening...";
+    btn.disabled = true;
 
     const formData = new FormData();
-    for (let file of fileInput.files) {
-        formData.append("resume_files", file);
-    }
-    formData.append("job_description", jobDescription);
-
-    button.disabled = true;
-    loading.classList.remove("hidden");
+    const files = document.getElementById("resumeFiles").files;
+    for (let f of files) formData.append("resume_files", f);
+    formData.append("job_description", document.getElementById("jobDescription").value);
+    formData.append("mode", "enhanced");
 
     try {
-        const response = await fetch(`${API_URL}/match-bulk`, {
-            method: "POST",
-            body: formData,
-        });
-
-        if (!response.ok) {
-            const errData = await response.json().catch(() => null);
-            throw new Error(errData?.detail || `Server returned ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Recruiter API Response:", data);
-
-        if (!data.results) {
-            throw new Error("Invalid response from backend");
-        }
-
-        // Summary stats
-        const summaryDiv = document.getElementById("summaryStats");
-        summaryDiv.innerHTML = `
-            <p><strong>Processed:</strong> ${data.processed} of ${data.total_resumes} resumes
-            ${data.failed > 0 ? ` | <span class="error-text">${data.failed} failed</span>` : ""}</p>
-        `;
-
-        // Sort by score
-        const sortedResults = [...data.results].sort((a, b) => (b.score || -1) - (a.score || -1));
-
-        // Build table rows
-        sortedResults.forEach((candidate, index) => {
-            const row = document.createElement("tr");
-
-            if (candidate.status === "failed") {
-                row.innerHTML = `
-                    <td>—</td>
-                    <td>${escapeHTML(candidate.filename)}</td>
-                    <td colspan="4" class="error-text">Failed: ${escapeHTML(candidate.error || "Unknown error")}</td>
-                `;
-            } else {
-                const matchedPreview = (candidate.matched_skills || []).slice(0, 3).join(", ");
-                const matchedMore = (candidate.matched_skills || []).length > 3
-                    ? ` +${candidate.matched_skills.length - 3} more`
-                    : "";
-
-                const missingPreview = (candidate.missing_skills || []).slice(0, 3).join(", ");
-                const missingMore = (candidate.missing_skills || []).length > 3
-                    ? ` +${candidate.missing_skills.length - 3} more`
-                    : "";
-
-                row.innerHTML = `
-                    <td><strong>${candidate.rank || index + 1}</strong></td>
-                    <td>${escapeHTML(candidate.filename)}</td>
-                    <td><strong>${candidate.score}%</strong></td>
-                    <td class="skills-preview matched">${matchedPreview}${matchedMore}</td>
-                    <td class="skills-preview missing">${missingPreview}${missingMore}</td>
-                    <td>
-                        <button class="btn-small" onclick="toggleBreakdown(this, ${JSON.stringify(candidate.breakdown).replace(/"/g, '&quot;')})">
-                            ▶ Details
-                        </button>
-                    </td>
-                `;
-            }
-
-            table.appendChild(row);
-        });
-
-        result.classList.remove("hidden");
-
+        const res = await fetch("/match-bulk", { method: "POST", body: formData });
+        const data = await res.json();
+        renderRecruiterDashboard(data.results || []);
     } catch (err) {
-        console.error(err);
-        showError(error, err.message || "Something went wrong. Try again.");
+        alert("Error: " + err.message);
     } finally {
-        loading.classList.add("hidden");
-        button.disabled = false;
+        btn.textContent = "Screen Candidates";
+        btn.disabled = false;
     }
+});
+
+function renderRecruiterDashboard(results) {
+    if (results.length === 0) return;
+    document.getElementById("results").style.display = "block";
+
+    // Sort by score descending
+    results.sort((a, b) => (b.score || 0) - (a.score || 0));
+
+    // Distribution chart
+    renderDistribution(results);
+
+    // Rankings table
+    const tbody = document.querySelector("#rankingsTable tbody");
+    tbody.innerHTML = "";
+    results.forEach((r, i) => {
+        const tr = document.createElement("tr");
+        const inferred = (r.inferred_skills || []).map(s => s.skill).join(", ") || "—";
+        tr.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${r.filename || "Unknown"}</td>
+            <td><strong>${r.score || 0}</strong></td>
+            <td>${(r.matched_skills || []).slice(0, 4).join(", ")}</td>
+            <td>${(r.missing_skills || []).slice(0, 3).join(", ")}</td>
+            <td>${inferred}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    // Skill availability
+    renderSkillAvailability(results);
 }
 
+function renderDistribution(results) {
+    const ctx = document.getElementById("distributionChart").getContext("2d");
+    if (distributionChartInstance) distributionChartInstance.destroy();
 
-// ==========================================
-// TOGGLE BREAKDOWN ROW IN RECRUITER TABLE
-// ==========================================
+    const labels = results.map(r => (r.filename || "?").slice(0, 15));
+    const scores = results.map(r => r.score || 0);
+    const colors = scores.map(s => s >= 70 ? "#22c55e" : s >= 40 ? "#f59e0b" : "#ef4444");
 
-function toggleBreakdown(button, breakdown) {
-    const row = button.closest("tr");
-    const existingDetail = row.nextElementSibling;
-
-    // If detail row already visible, remove it
-    if (existingDetail && existingDetail.classList.contains("detail-row")) {
-        existingDetail.remove();
-        button.textContent = "▶ Details";
-        return;
-    }
-
-    // Create detail row
-    const detailRow = document.createElement("tr");
-    detailRow.className = "detail-row";
-
-    let breakdownHTML = "";
-    if (breakdown) {
-        const labels = {
-            keyword: "Keyword",
-            skill: "Skill",
-            tfidf: "TF-IDF",
-            inference: "Inference",
-            credibility: "Credibility",
-            semantic: "Semantic",
-        };
-
-        for (const [key, value] of Object.entries(breakdown)) {
-            if (value === 0 && (key === "inference" || key === "credibility" || key === "semantic")) {
-                continue;
-            }
-            breakdownHTML += `<span class="breakdown-chip">${labels[key] || key}: ${value}%</span> `;
-        }
-    }
-
-    detailRow.innerHTML = `<td colspan="6" class="detail-cell">${breakdownHTML}</td>`;
-    row.after(detailRow);
-    button.textContent = "▼ Details";
-}
-
-
-// ==========================================
-// UTILITIES
-// ==========================================
-
-function showError(element, message) {
-    element.textContent = message;
-    element.classList.remove("hidden");
-}
-
-function escapeHTML(text) {
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-
-// ==========================================
-// FILE INPUT LISTENERS
-// ==========================================
-
-const studentFileInput = document.getElementById("resumeFile");
-if (studentFileInput) {
-    studentFileInput.addEventListener("change", function () {
-        const fileName = document.getElementById("fileName");
-        if (this.files.length > 0) {
-            const size = (this.files[0].size / 1024 / 1024).toFixed(1);
-            fileName.textContent = `Selected: ${this.files[0].name} (${size} MB)`;
-        } else {
-            fileName.textContent = "";
+    distributionChartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Similarity Score",
+                data: scores,
+                backgroundColor: colors,
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, max: 100 } },
+            responsive: true,
         }
     });
 }
 
-const recruiterFileInput = document.getElementById("resumeFiles");
-if (recruiterFileInput) {
-    recruiterFileInput.addEventListener("change", function () {
-        const selectedFiles = document.getElementById("selectedFiles");
-        if (this.files.length === 0) {
-            selectedFiles.textContent = "No files selected";
-            return;
+function renderSkillAvailability(results) {
+    // Count how many candidates have each skill
+    const skillCounts = {};
+    results.forEach(r => {
+        (r.matched_skills || []).forEach(s => {
+            skillCounts[s] = (skillCounts[s] || 0) + 1;
+        });
+    });
+
+    const topSkills = Object.entries(skillCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+
+    if (topSkills.length === 0) return;
+    document.getElementById("skillAvailRow").style.display = "flex";
+
+    const ctx = document.getElementById("skillAvailChart").getContext("2d");
+    if (skillAvailChartInstance) skillAvailChartInstance.destroy();
+
+    skillAvailChartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: topSkills.map(s => s[0]),
+            datasets: [{
+                label: "Candidates with skill",
+                data: topSkills.map(s => s[1]),
+                backgroundColor: "#8b5cf6",
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+            responsive: true,
         }
-        const totalSize = Array.from(this.files).reduce((sum, f) => sum + f.size, 0);
-        selectedFiles.textContent = `${this.files.length} resume(s) selected (${(totalSize / 1024 / 1024).toFixed(1)} MB total)`;
     });
 }

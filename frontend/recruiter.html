@@ -3,65 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruiter Portal - SkillSync</title>
+    <title>SkillSync — Recruiter Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-
-        <header>
-            <h1>SkillSync — Recruiter Portal</h1>
-            <p>Upload multiple resumes and rank candidates against a job description.</p>
-            <a href="index.html" class="nav-link">← Go to Student Portal</a>
-        </header>
-
-        <div class="card">
-            <h2>Upload Resumes</h2>
-            <input type="file" id="resumeFiles" accept=".pdf" multiple>
-            <p id="selectedFiles" class="file-name">No files selected</p>
-
-            <h2>Job Description</h2>
-            <textarea
-                id="recruiterJobDescription"
-                placeholder="Paste job description here..."
-                rows="10"
-            ></textarea>
-
-            <button id="rankButton" onclick="rankCandidates()">
-                Rank Candidates
-            </button>
-
-            <!-- Loading -->
-            <div id="recruiterLoading" class="loading hidden">
-                <div class="spinner"></div>
-                <p>Processing resumes... This may take 20–30 seconds.</p>
-            </div>
-
-            <!-- Error -->
-            <div id="recruiterError" class="error hidden"></div>
-
-            <!-- Results -->
-            <div id="recruiterResult" class="result hidden">
-                <h2>Candidate Ranking</h2>
-
-                <div id="summaryStats" class="summary-stats"></div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Resume</th>
-                            <th>Score</th>
-                            <th>Matched Skills</th>
-                            <th>Missing Skills</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultsTable"></tbody>
-                </table>
-            </div>
+    <nav>
+        <h1>SkillSync</h1>
+        <div class="nav-links">
+            <a href="index.html">Student</a>
+            <a href="recruiter.html" class="active">Recruiter</a>
         </div>
-    </div>
+    </nav>
+
+    <main>
+        <section class="upload-section">
+            <h2>Bulk Resume Screening</h2>
+            <p class="subtitle">Upload multiple resumes and a job description to rank candidates.</p>
+
+            <form id="bulkForm">
+                <div class="form-group">
+                    <label>Resumes (PDF, multiple allowed)</label>
+                    <input type="file" id="resumeFiles" accept=".pdf" multiple required>
+                </div>
+                <div class="form-group">
+                    <label>Job Description</label>
+                    <textarea id="jobDescription" rows="6" placeholder="Paste the job description..." required></textarea>
+                </div>
+                <button type="submit" id="screenBtn">Screen Candidates</button>
+            </form>
+        </section>
+
+        <!-- Results -->
+        <section id="results" style="display:none;">
+            <div class="dashboard-row">
+                <div class="card full-width">
+                    <h3>Candidate Score Distribution</h3>
+                    <canvas id="distributionChart" width="600" height="250"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-row">
+                <div class="card full-width">
+                    <h3>Candidate Rankings</h3>
+                    <p class="subtitle">Sorted by similarity score (not a hiring recommendation)</p>
+                    <table id="rankingsTable" class="rankings-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Resume</th>
+                                <th>Score</th>
+                                <th>Top Matched</th>
+                                <th>Key Missing</th>
+                                <th>Inferred</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dashboard-row" id="skillAvailabilityRow" style="display:none;">
+                <div class="card full-width">
+                    <h3>Skill Availability Across Candidates</h3>
+                    <canvas id="skillAvailChart" width="600" height="250"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>SkillSync — B.Tech Major Project | Scores are similarity estimates, not hiring decisions.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

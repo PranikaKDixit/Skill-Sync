@@ -3,77 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal - SkillSync</title>
+    <title>SkillSync — Student Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <nav>
+        <h1>SkillSync</h1>
+        <div class="nav-links">
+            <a href="index.html" class="active">Student</a>
+            <a href="recruiter.html">Recruiter</a>
+        </div>
+    </nav>
 
-        <header>
-            <h1>SkillSync — Student Portal</h1>
-            <p>Check how well your resume matches a job description.</p>
-            <a href="recruiter.html" class="nav-link">Go to Recruiter Portal →</a>
-        </header>
+    <main>
+        <section class="upload-section">
+            <h2>Resume–Job Match Analysis</h2>
+            <p class="subtitle">Upload your resume and paste the job description to see how well you match.</p>
 
-        <div class="card">
-            <h2>Upload Resume</h2>
-            <input type="file" id="resumeFile" accept=".pdf">
-            <p id="fileName" class="file-name"></p>
+            <form id="matchForm">
+                <div class="form-group">
+                    <label>Resume (PDF, max 5MB)</label>
+                    <input type="file" id="resumeFile" accept=".pdf" required>
+                </div>
+                <div class="form-group">
+                    <label>Job Description</label>
+                    <textarea id="jobDescription" rows="6" placeholder="Paste the full job description here..." required></textarea>
+                </div>
+                <button type="submit" id="analyzeBtn">Analyze Match</button>
+            </form>
+        </section>
 
-            <h2>Job Description</h2>
-            <textarea
-                id="jobDescription"
-                placeholder="Paste job description here..."
-                rows="10"
-            ></textarea>
+        <div id="warning" class="warning" style="display:none;"></div>
 
-            <button id="matchButton" onclick="calculateMatch()">
-                Calculate Match
-            </button>
+        <!-- Dashboard (hidden until analysis) -->
+        <section id="dashboard" style="display:none;">
 
-            <!-- Loading -->
-            <div id="loading" class="loading hidden">
-                <div class="spinner"></div>
-                <p>Processing your resume...</p>
+            <!-- Score Gauge + Breakdown -->
+            <div class="dashboard-row">
+                <div class="card gauge-card">
+                    <h3>Similarity Score</h3>
+                    <p class="score-disclaimer">Not a hiring probability</p>
+                    <canvas id="gaugeChart" width="250" height="250"></canvas>
+                    <div id="scoreValue" class="score-value">—</div>
+                </div>
+                <div class="card breakdown-card">
+                    <h3>Score Breakdown</h3>
+                    <canvas id="breakdownChart" width="400" height="250"></canvas>
+                </div>
             </div>
 
-            <!-- Error -->
-            <div id="errorMessage" class="error hidden"></div>
-
-            <!-- Warning -->
-            <div id="warningMessage" class="warning hidden"></div>
-
-            <!-- Result -->
-            <div id="result" class="result hidden">
-
-                <h2>Match Result</h2>
-
-                <div class="score">
-                    <span id="matchScore">0%</span>
+            <!-- Radar + Skills -->
+            <div class="dashboard-row">
+                <div class="card radar-card">
+                    <h3>Skill Category Coverage</h3>
+                    <canvas id="radarChart" width="350" height="300"></canvas>
                 </div>
-                <p class="score-label">Similarity Score (not a hiring probability)</p>
-
-                <!-- Breakdown -->
-                <div id="breakdownSection" class="breakdown-section">
-                    <h3>Score Breakdown</h3>
-                    <div id="breakdownBars"></div>
-                </div>
-
-                <!-- Matched Skills -->
-                <div id="matchedSection" class="skills-section hidden">
-                    <h3>✅ Matched Skills</h3>
+                <div class="card skills-card">
+                    <h3>Matched Skills</h3>
                     <div id="matchedSkills" class="skill-tags"></div>
-                </div>
-
-                <!-- Missing Skills -->
-                <div id="missingSection" class="skills-section hidden">
-                    <h3>❌ Missing Skills</h3>
+                    <h3 style="margin-top:16px;">Missing Skills</h3>
                     <div id="missingSkills" class="skill-tags"></div>
                 </div>
-
             </div>
-        </div>
-    </div>
+
+            <!-- Inferred Skills -->
+            <div class="dashboard-row" id="inferredRow" style="display:none;">
+                <div class="card full-width">
+                    <h3>🧠 Inferred Skills (Ontology-Based Reasoning)</h3>
+                    <p class="subtitle">Skills the system deduced from your explicit skills, even though you didn't list them directly.</p>
+                    <div id="inferredSkills" class="inferred-list"></div>
+                </div>
+            </div>
+
+            <!-- Credibility -->
+            <div class="dashboard-row" id="credibilityRow" style="display:none;">
+                <div class="card full-width">
+                    <h3>📊 Skill Credibility Scores</h3>
+                    <p class="subtitle">How strongly each JD skill is evidenced in your resume.</p>
+                    <div id="credibilityTable"></div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="dashboard-row" id="recsRow" style="display:none;">
+                <div class="card full-width">
+                    <h3>💡 Recommendations</h3>
+                    <div id="recommendations" class="recs-grid"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>SkillSync — B.Tech Major Project | Similarity scores are estimates, not hiring decisions.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

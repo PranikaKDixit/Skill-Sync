@@ -129,3 +129,49 @@ async def match_bulk(
         results.append(match_result)
 
     return {"results": results}
+
+from ml.recommendations import generate_recommendations
+
+
+@app.post("/analyze")
+async def analyze(
+    resume_file: UploadFile = File(...),
+    job_description: str = Form(...),
+    mode: str = Form("enhanced"),
+):
+    """
+    Full analysis endpoint for the dashboard.
+    Returns match result + recommendations + chart-ready data.
+    """
+    content = await resume_file.read()
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(400, "File too large (max 5MB)")
+    if not content[:5].startswith(b"%PDF"):
+        raise HTTPException(400, "Not a valid PDF file")
+
+    parsed = extract_text_from_pdf(content)
+    if parsed["status"] == "error":
+        raise HTTPException(500, f"PDF parsing failed: {parsed['error']}")
+    if parsed["status"] == "empty":
+        return {
+            "score": 0, "breakdown": {}, "matched_skills": [],
+            "missing_skills": [], "mode": mode,
+            "warning": parsed["error"], "recommendations": [],
+        }
+
+    # Force enhanced mode for full analysis
+    result = calculate_match(
+        resume_text=parsed["text"],
+        jd_text=job_description,
+        mode="enhanced",
+        resume_sections=parsed.get("sections"),
+    )
+
+    # Generate recommendations
+    recs = generate_recommendations(result, parsed["text"], job_description)
+    result["recommendations"] = recs
+
+    # Add section data for charts
+    result["sections_detected"] = list(parsed.get("sections", {}).keys())
+
+    return result

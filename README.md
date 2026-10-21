@@ -1,225 +1,63 @@
-SkillSync
+# SkillSync: Intelligent Resume–Job Matching System
 
-SkillSync is a resume and job description matching system that helps students understand how well their resume matches a job role and helps recruiters compare multiple candidates.
+An intelligent resume–job matching system with ontology-based skill inference,
+semantic similarity, and evidence-weighted credibility scoring.
 
-🔗 Project Links
+**B.Tech Major Project** — Computer Science & Engineering
 
-GitHub Repository: https://github.com/PranikaKDixit/Skill-Sync
+## What It Does
 
-Student Portal: http://localhost:5173
+SkillSync takes a resume (PDF) and a job description, then produces a
+**similarity score (0–100)** with a full explanation of *why* that score
+was assigned.
 
-Recruiter Portal: http://localhost:5173/recruiter.html
+Unlike simple keyword matchers, SkillSync:
 
-API Documentation: http://localhost:8000/docs
+- **Infers implicit skills** — a resume listing Django, Pandas, and
+  scikit-learn is recognized as having Python experience, even if the
+  word "Python" never appears
+- **Understands meaning** — "machine learning pipelines" matches
+  "ML model development" using Sentence-BERT embeddings
+- **Weighs evidence** — a skill mentioned once in a job title scores
+  lower than one demonstrated across multiple projects with specific metrics
+- **Learns from data** — a GradientBoosting model trained on 100 labeled
+  pairs discovers the optimal combination of matching signals
 
-The local application links are available when the project is running.
+## What It Does NOT Do
 
-📌 Overview
+To be clear and honest:
 
-SkillSync analyzes a resume against a given job description and generates a match percentage along with matched and missing skills.
+- It does **not** predict hiring outcomes or candidate quality
+- It does **not** use large language models (no GPT, no LLM API calls)
+- It does **not** claim novel ML contributions — it applies established
+  techniques (SBERT, TF-IDF, gradient boosting) in a well-engineered pipeline
+- It does **not** replace human judgment in hiring
 
-The project provides two main portals:
+## Tech Stack
 
-Student Portal – Upload a resume and check its match with a job description.
+| Layer | Technology |
+|-------|-----------|
+| Frontend | HTML, CSS, JavaScript, Chart.js |
+| Backend | FastAPI (Python) |
+| ML/NLP | scikit-learn, Sentence-BERT (all-MiniLM-L6-v2), PyTorch (CPU) |
+| PDF Parsing | pypdf |
+| Containerization | Docker, Docker Compose, Nginx |
 
-Recruiter Portal – Upload multiple resumes and compare candidates based on their match scores.
+## Quick Start
 
-✨ Features
+### Prerequisites
+- Docker Desktop installed and running
+- 4GB+ free RAM (for SBERT model)
+- Internet connection (first run downloads ~220MB of ML models)
 
-PDF resume upload
+### Run
 
-Job description based matching
-
-Resume match percentage
-
-Matched skills
-
-Missing skills
-
-Multiple resume comparison
-
-Candidate ranking
-
-FastAPI Swagger API documentation
-
-Dockerized application
-
-⚙️ How It Works
-
-Resume + Job Description
-          ↓
-    PDF Text Extraction
-          ↓
-     Matching Engine
-          ↓
- Match Score + Skills
-          ↓
-      Result Display
-
-For recruiters, multiple resumes are processed and compared with the selected job description.
-
-🛠️ Tech Stack
-
-Category
-
-Technology
-
-Frontend
-
-HTML, CSS, JavaScript
-
-Backend
-
-Python, FastAPI
-
-Matching
-
-Keyword, Skill & TF-IDF based matching
-
-PDF Processing
-
-PDF Parser / Poppler
-
-Web Server
-
-Nginx
-
-Containerization
-
-Docker & Docker Compose
-
-## 📸 Screenshots
-
-### Student Portal
-
-The Student Portal allows students to upload their resume, enter a job description, and view the matching result.
-
-![Student Portal](docs/screenshots/student-portal.png)
-
-### Recruiter Portal
-
-The Recruiter Portal allows recruiters to upload multiple resumes and compare candidates based on their matching scores.
-
-![Recruiter Portal](docs/screenshots/recruiter-portal.png)
-
-### API Documentation
-
-SkillSync provides interactive API documentation through FastAPI Swagger UI.
-
-![Swagger API](docs/screenshots/swagger-api.png)
-
-
-
-🚀 Getting Started
-
-Prerequisites
-
-Make sure the following are installed:
-
-Docker Desktop
-
-Git
-
-Clone the Repository
-
-git clone https://github.com/PranikaKDixit/Skill-Sync.git
-
-Navigate to the Project
-
-cd Skill-Sync
-
-Start the Application
-
+```bash
+# Clone and start
+git clone <your-repo-url>
+cd skillsync
 docker compose up --build
 
-🌐 Application URLs
-
-Once the application is running:
-
-Application
-
-URL
-
-Student Portal
-
-http://localhost:5173
-
-Recruiter Portal
-
-http://localhost:5173/recruiter.html
-
-Backend API
-
-http://localhost:8000
-
-Swagger API Docs
-
-http://localhost:8000/docs
-
-🛑 Stop the Application
-
-To stop the application, run:
-
-docker compose down
-
-## 📂 Project Structure
-
-```text
-Skill-Sync/
-│
-├── .github/
-│   └── workflows/              # GitHub configuration/workflows
-│
-├── .trunk/                     # Trunk configuration
-│
-├── backend/                    # FastAPI backend
-│   ├── Dockerfile
-│   ├── main.py
-│   ├── requirements.txt
-│   ├── __init__.py
-│   └── .gitkeep
-│
-├── frontend/                   # Student & recruiter portals
-│   ├── index.html
-│   ├── recruiter.html
-│   ├── script.js
-│   └── style.css
-│
-├── ml/                         # Resume-job matching logic
-│
-├── pdf_parsing/                # PDF resume processing
-│
-├── data/                       # Project data
-│   ├── job_descriptions/
-│   └── resumes/
-│
-├── docs/
-│   └── screenshots/            # Project screenshots
-│       ├── student-portal.png
-│       ├── recruiter-portal.png
-│       └── swagger-api.png
-│
-├── docker-compose.yml          # Docker services configuration
-├── index.html                  # Root student portal
-├── recruiter.html              # Root recruiter portal
-├── script.js                   # Root frontend script
-├── style.css                   # Root frontend styles
-└── README.md                   # Project documentation
-
-👥 Contributors
-
-Pranika Dixit
-
-Navagya Singh
-
-Preetika Gupta
-
-Pragati Patel
-
-kashish Nigam
-
-Noor Bano
-
-📄 License
-
-This project is developed for academic purposes.
+# First-time setup (inside container)
+docker compose exec -w /app backend python data/generate_dataset.py
+docker compose exec -w /app backend python -m ml.train

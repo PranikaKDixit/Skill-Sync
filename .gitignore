@@ -2,11 +2,15 @@
 .env
 .env.*
 !.env.example
+*.env
 
-# Python caches, test output, and local environments
+# Python caches, environments, and build output
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+.eggs/
+*.egg
 .pytest_cache/
 .coverage
 .coverage.*
@@ -17,20 +21,22 @@ venv/
 .venv/
 env/
 ENV/
-*.egg-info/
+dist/
+build/
 
 # Frontend dependencies and build output
 node_modules/
-dist/
-build/
 .parcel-cache/
 .vite/
 
 # Machine-learning artifacts and local datasets
 ml/models/*
 !ml/models/.gitkeep
+ml/models/*.pkl
 ml/data/*
 !ml/data/.gitkeep
+.cache/
+~/.cache/
 
 # Uploaded, scraped, and collected local data
 backend/uploads/
@@ -42,17 +48,30 @@ data/job_descriptions/*
 data/resumes/*
 !data/resumes/.gitkeep
 
+# Sensitive resume and evaluation data
+data/resumes/*.pdf
+data/evaluation_dataset.csv
+
 # Runtime files, logs, and local databases
 *.log
 *.sqlite
 *.sqlite3
 *.db
 
-# Editor and operating-system files
+# Test artifacts
+test_*.pdf
+full_program.txt
+
+# Editor and IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Operating system files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-full_program.txt
+# Docker
+.docker/
