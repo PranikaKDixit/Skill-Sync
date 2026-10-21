@@ -1,7 +1,3 @@
-"""
-SkillSync Backend — FastAPI server.
-Handles resume upload, JD matching (baseline + enhanced).
-"""
 import os
 from fastapi import FastAPI, UploadFile, File, Form, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
