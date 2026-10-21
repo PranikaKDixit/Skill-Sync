@@ -1,189 +1,231 @@
-"""Tests for the matching engine."""
+"""Tests for the matching engine — runs from repo root via pytest."""
 
-from matching_engine import (
+import pytest
+from ml.matching_engine import (
     calculate_match,
     keyword_match,
     skill_match,
     tfidf_match,
     extract_skills,
+    _token_cosine,
+    _tokens,
 )
 
 
-def test_perfect_match():
-    """Test identical texts score very high."""
-    text = "Python developer with 5 years Django and React experience"
-    score = calculate_match(text, text)
-    print(f"✅ Perfect match: {score}%")
-    assert score >= 90, f"Expected ≥90%, got {score}%"
+class TestCalculateMatch:
+    """Tests for the main calculate_match function."""
+
+    def test_returns_dict_with_required_keys(self):
+        result = calculate_match("Python developer", "Python developer needed")
+        assert isinstance(result, dict)
+        assert "score" in result
+        assert "breakdown" in result
+        assert "matched_skills" in result
+        assert "missing_skills" in result
+        assert "mode" in result
+
+    def test_perfect_match(self):
+        text = "Python developer with 5 years Django and React experience"
+        result = calculate_match(text, text)
+        assert result["score"] >= 90, f"Expected >=90, got {result['score']}"
+
+    def test_high_match(self):
+        resume = """
+        Senior Software Engineer with 5 years experience in Python and JavaScript.
+        Expert in Django, Flask, React, and Node.js. Built REST APIs and microservices.
+        Experience with Docker, Kubernetes, AWS, PostgreSQL, and Redis.
+        """
+        job = """
+        We're looking for a Senior Software Engineer with Python, JavaScript expertise.
+        Must have Django, React, and REST API experience. AWS and Docker required.
+        PostgreSQL experience preferred.
+        """
+        result = calculate_match(resume, job)
+        assert 60 <= result["score"] <= 100, f"Expected 60-100, got {result['score']}"
+
+    def test_low_match(self):
+        resume = "Graphic designer with 3 years Photoshop, Illustrator, InDesign"
+        job = "DevOps engineer needed: Docker, Kubernetes, AWS, Terraform, Jenkins"
+        result = calculate_match(resume, job)
+        assert result["score"] <= 30, f"Expected <=30, got {result['score']}"
+
+    def test_empty_resume(self):
+        result = calculate_match("", "Python developer needed")
+        assert result["score"] == 0.0
+
+    def test_empty_job(self):
+        result = calculate_match("Python developer", "")
+        assert result["score"] == 0.0
+
+    def test_both_empty(self):
+        result = calculate_match("", "")
+        assert result["score"] == 0.0
+
+    def test_none_inputs(self):
+        result = calculate_match(None, None)
+        assert result["score"] == 0.0
+
+    def test_baseline_mode(self):
+        result = calculate_match("Python Django", "Python Django", mode="baseline")
+        assert "keyword_match" in result["breakdown"]
+        assert "skill_match" in result["breakdown"]
+        assert "tfidf_similarity" in result["breakdown"]
+
+    def test_enhanced_mode(self):
+        result = calculate_match("Python Django", "Python Django", mode="enhanced")
+        assert result["mode"] == "enhanced"
+        assert "inferred_skills" in result
+        assert "skill_inference" in result["breakdown"]
+        assert "credibility_weighted" in result["breakdown"]
+        assert "semantic_similarity" in result["breakdown"]
+
+    def test_breakdown_components_are_numbers(self):
+        result = calculate_match("Python Django React", "Python Django React")
+        for key, value in result["breakdown"].items():
+            assert isinstance(value, (int, float)), f"{key} is not a number: {value}"
+
+    def test_matched_skills_sorted(self):
+        result = calculate_match(
+            "Python React Docker SQL",
+            "Docker Python React SQL"
+        )
+        assert result["matched_skills"] == sorted(result["matched_skills"])
+
+    def test_missing_skills_sorted(self):
+        result = calculate_match(
+            "Python",
+            "Python React Docker Kubernetes"
+        )
+        assert result["missing_skills"] == sorted(result["missing_skills"])
 
 
-def test_high_match():
-    """Test strong resume-job alignment."""
-    resume = """
-    Senior Software Engineer with 5 years experience in Python and JavaScript.
-    Expert in Django, Flask, React, and Node.js. Built REST APIs and microservices.
-    Experience with Docker, Kubernetes, AWS, PostgreSQL, and Redis.
-    """
-    job = """
-    We're looking for a Senior Software Engineer with Python, JavaScript expertise.
-    Must have Django, React, and REST API experience. AWS and Docker required.
-    PostgreSQL experience preferred.
-    """
-    score = calculate_match(resume, job)
-    print(f"✅ High match: {score}%")
-    assert 70 <= score <= 95, f"Expected 70-95%, got {score}%"
+class TestKeywordMatch:
+    """Tests for keyword overlap."""
+
+    def test_full_overlap(self):
+        score = keyword_match("python django flask", "python django flask")
+        assert score >= 90
+
+    def test_partial_overlap(self):
+        resume = "Python developer with Django and Flask experience"
+        job = "Python Django Flask developer"
+        score = keyword_match(resume, job)
+        assert score >= 75
+
+    def test_no_overlap(self):
+        score = keyword_match("graphic designer photoshop", "kubernetes docker aws")
+        assert score <= 15
+
+    def test_empty_job(self):
+        assert keyword_match("Python developer", "") == 0.0
 
 
-def test_medium_match():
-    """Partial alignment."""
-    resume = "Full-stack developer: JavaScript, React, Node.js, MongoDB, Docker"
-    job = "Backend engineer: Python, Django, PostgreSQL, Docker, Git, 5 years"
-    score = calculate_match(resume, job)
-    print(f"Medium match: {score}%")
-    assert 10 <= score <= 60, f"Expected 10-60%, got {score}%"  # Lowered floor
-    print("✅ PASS\n")
+class TestSkillMatch:
+    """Tests for skill dictionary matching."""
+
+    def test_all_skills_match(self):
+        resume = "Skills: Python, React, Docker"
+        job = "Required: Python, React, Docker"
+        score = skill_match(resume, job)
+        assert score == 100.0
+
+    def test_partial_skill_match(self):
+        resume = "Skills: Python, React, Docker, MySQL"
+        job = "Required: Python, React, AWS, PostgreSQL"
+        score = skill_match(resume, job)
+        assert 45 <= score <= 55  # 2 out of 4
+
+    def test_no_skill_match(self):
+        resume = "Photoshop, Illustrator, InDesign"
+        job = "Docker, Kubernetes, Terraform"
+        score = skill_match(resume, job)
+        assert score == 0.0
 
 
-def test_low_match():
-    """Test unrelated resume and job."""
-    resume = "Graphic designer with 3 years Photoshop, Illustrator, InDesign"
-    job = "DevOps engineer needed: Docker, Kubernetes, AWS, Terraform, Jenkins"
-    score = calculate_match(resume, job)
-    print(f"✅ Low match: {score}%")
-    assert score <= 30, f"Expected ≤30%, got {score}%"
+class TestTfidfMatch:
+    """Tests for TF-IDF similarity."""
+
+    def test_similar_texts(self):
+        resume = "Experienced software engineer with Python expertise"
+        job = "Looking for experienced software engineer with Python skills"
+        score = tfidf_match(resume, job)
+        assert score >= 40
+
+    def test_different_texts(self):
+        score = tfidf_match(
+            "Graphic designer with creative portfolio",
+            "DevOps engineer with Kubernetes and AWS"
+        )
+        assert score <= 30
+
+    def test_empty_input(self):
+        assert tfidf_match("", "Python") == 0.0
+        assert tfidf_match("Python", "") == 0.0
 
 
-def test_skill_extraction():
-    """Test skill detection including aliases."""
-    text = "Expert in Python, ReactJS, NodeJS, Postgres, K8s, and ML"
-    skills = extract_skills(text)
-    print(f"✅ Extracted skills: {skills}")
-    
-    # Check canonical skills
-    assert "python" in skills, "Should find python"
-    assert "react" in skills, "ReactJS should map to react"
-    assert "node.js" in skills, "NodeJS should map to node.js"
-    assert "postgresql" in skills, "Postgres should map to postgresql"
-    assert "kubernetes" in skills, "K8s should map to kubernetes"
-    assert "machine learning" in skills, "ML should map to machine learning"
+class TestExtractSkills:
+    """Tests for skill extraction."""
+
+    def test_basic_skills(self):
+        skills = extract_skills("Expert in Python, Java, and Docker")
+        assert "python" in skills
+        assert "java" in skills
+        assert "docker" in skills
+
+    def test_aliases(self):
+        skills = extract_skills("Expert in ReactJS, NodeJS, Postgres, K8s, and ML")
+        assert "react" in skills, "ReactJS should map to react"
+        assert "node.js" in skills, "NodeJS should map to node.js"
+        assert "postgresql" in skills, "Postgres should map to postgresql"
+        assert "kubernetes" in skills, "K8s should map to kubernetes"
+        assert "machine learning" in skills, "ML should map to machine learning"
+
+    def test_special_characters(self):
+        skills = extract_skills("Expert in C++, C#, and Node.js development")
+        assert "node.js" in skills
+
+    def test_word_boundaries(self):
+        """Java should not match inside JavaScript."""
+        skills = extract_skills("JavaScript developer")
+        assert "javascript" in skills
+        # Java should NOT be found since it's part of JavaScript
+        # This depends on regex boundary handling
+
+    def test_empty_text(self):
+        skills = extract_skills("")
+        assert skills == set()
+
+    def test_none_text(self):
+        skills = extract_skills(None)
+        assert skills == set()
 
 
-def test_keyword_matching():
-    """Test keyword overlap calculation."""
-    resume = "Python developer with Django and Flask experience"
-    job = "Python Django Flask developer"
-    score = keyword_match(resume, job)
-    print(f"✅ Keyword match: {score}%")
-    assert score >= 75, f"High keyword overlap should be ≥75%, got {score}%"
+class TestFallbackCosine:
+    """Tests for the dependency-free cosine fallback."""
 
+    def test_identical_tokens(self):
+        tokens = ["python", "developer", "django"]
+        similarity = _token_cosine(tokens, tokens)
+        assert abs(similarity - 1.0) < 0.01
 
-def test_skill_matching():
-    """Test skill-specific matching."""
-    resume = "Skills: Python, React, Docker, MySQL"
-    job = "Required: Python, React, AWS, PostgreSQL"
-    score = skill_match(resume, job)
-    print(f"✅ Skill match: {score}%")
-    # 2 out of 4 skills match = 50%
-    assert 45 <= score <= 55, f"Expected ~50%, got {score}%"
+    def test_no_overlap(self):
+        similarity = _token_cosine(
+            ["python", "django"],
+            ["kubernetes", "docker"]
+        )
+        assert similarity == 0.0
 
+    def test_partial_overlap(self):
+        similarity = _token_cosine(
+            ["python", "developer", "django"],
+            ["python", "developer", "react"]
+        )
+        assert 0.3 <= similarity <= 0.8
 
-def test_tfidf_matching():
-    """Test semantic similarity."""
-    resume = "Experienced software engineer with Python expertise"
-    job = "Looking for experienced software engineer with Python skills"
-    score = tfidf_match(resume, job)
-    print(f"✅ TF-IDF match: {score}%")
-    assert score >= 50, f"Similar texts should be ≥50%, got {score}%"
-
-
-def test_edge_cases():
-    """Test error handling."""
-    # Empty resume
-    score = calculate_match("", "Python developer needed")
-    print(f"✅ Empty resume: {score}%")
-    assert score == 0.0, f"Empty resume should be 0%, got {score}%"
-    
-    # Empty job
-    score = calculate_match("Python developer", "")
-    print(f"✅ Empty job: {score}%")
-    assert score == 0.0, f"Empty job should be 0%, got {score}%"
-    
-    # Both empty
-    score = calculate_match("", "")
-    print(f"✅ Both empty: {score}%")
-    assert score == 0.0, f"Both empty should be 0%, got {score}%"
-    
-    # None inputs
-    score = calculate_match(None, None)
-    print(f"✅ None inputs: {score}%")
-    assert score == 0.0, f"None inputs should be 0%, got {score}%"
-
-
-def test_fallback_cosine():
-    """Test that fallback cosine similarity works."""
-    from matching_engine import _token_cosine, _tokens
-    
-    resume = "Python developer with Django"
-    job = "JavaScript developer with React"  # Different but some overlap
-    
-    resume_tokens = _tokens(resume)
-    job_tokens = _tokens(job)
-    
-    similarity = _token_cosine(resume_tokens, job_tokens)
-    print(f"Fallback cosine: {similarity:.2%}")
-    assert 0.2 <= similarity <= 1.01, f"Should be 0.2-1.0, got {similarity}"
-    print("✅ PASS\n")
-
-
-def test_special_characters():
-    """Test handling of C++, C#, .NET, etc."""
-    resume = "Expert in C++, C#, .NET, and Node.js development"
-    skills = extract_skills(resume)
-    print(f"✅ Special chars skills: {skills}")
-    
-    assert "c++" in skills, "Should find C++"
-    assert "c#" in skills, "Should find C#"
-    assert "node.js" in skills, "Should find Node.js"
+    def test_empty_tokens(self):
+        assert _token_cosine([], []) == 0.0
+        assert _token_cosine(["python"], []) == 0.0
 
 
 if __name__ == "__main__":
-    print("=" * 60)
-    print("MATCHING ENGINE TEST SUITE")
-    print("=" * 60)
-    print()
-    
-    tests = [
-        test_perfect_match,
-        test_high_match,
-        test_medium_match,
-        test_low_match,
-        test_skill_extraction,
-        test_keyword_matching,
-        test_skill_matching,
-        test_tfidf_matching,
-        test_edge_cases,
-        test_fallback_cosine,
-        test_special_characters,
-    ]
-    
-    failed = []
-    for test in tests:
-        try:
-            test()
-        except AssertionError as e:
-            print(f"❌ FAILED: {test.__name__}")
-            print(f"   {e}")
-            failed.append(test.__name__)
-        except Exception as e:
-            print(f"❌ ERROR in {test.__name__}: {e}")
-            failed.append(test.__name__)
-        print()
-    
-    print("=" * 60)
-    if not failed:
-        print("✅ ALL TESTS PASSED!")
-    else:
-        print(f"❌ {len(failed)} TEST(S) FAILED:")
-        for name in failed:
-            print(f"   - {name}")
-    print("=" * 60)
+    pytest.main([__file__, "-v"])

@@ -3,120 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Recruiter Portal - Resume Matcher</title>
-
+    <title>Recruiter Portal - SkillSync</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <div class="container">
 
         <header>
-
-            <h1>Recruiter Portal</h1>
-
-            <p>
-                Upload multiple resumes and rank candidates
-                according to the job description.
-            </p>
-
-            <a href="index.html" class="nav-link">
-                ← Go to Student Portal
-            </a>
-
+            <h1>SkillSync — Recruiter Portal</h1>
+            <p>Upload multiple resumes and rank candidates against a job description.</p>
+            <a href="index.html" class="nav-link">← Go to Student Portal</a>
         </header>
 
-
         <div class="card">
-
             <h2>Upload Resumes</h2>
-
-            <input
-                type="file"
-                id="resumeFiles"
-                accept=".pdf"
-                multiple
-            >
-
-            <p id="selectedFiles" class="file-name">
-                No files selected
-            </p>
-
+            <input type="file" id="resumeFiles" accept=".pdf" multiple>
+            <p id="selectedFiles" class="file-name">No files selected</p>
 
             <h2>Job Description</h2>
-
             <textarea
                 id="recruiterJobDescription"
                 placeholder="Paste job description here..."
                 rows="10"
             ></textarea>
 
-
-            <button
-                id="rankButton"
-                onclick="rankCandidates()"
-            >
+            <button id="rankButton" onclick="rankCandidates()">
                 Rank Candidates
             </button>
 
-
             <!-- Loading -->
-
             <div id="recruiterLoading" class="loading hidden">
-
                 <div class="spinner"></div>
-
-                <p>
-                    Processing resumes...
-                    This may take 20-30 seconds.
-                </p>
-
+                <p>Processing resumes... This may take 20–30 seconds.</p>
             </div>
-
 
             <!-- Error -->
-
-            <div
-                id="recruiterError"
-                class="error hidden">
-            </div>
-
+            <div id="recruiterError" class="error hidden"></div>
 
             <!-- Results -->
-
-            <div
-                id="recruiterResult"
-                class="result hidden">
-
+            <div id="recruiterResult" class="result hidden">
                 <h2>Candidate Ranking</h2>
 
+                <div id="summaryStats" class="summary-stats"></div>
+
                 <table>
-
                     <thead>
-
                         <tr>
                             <th>Rank</th>
                             <th>Resume</th>
-                            <th>Match Score</th>
+                            <th>Score</th>
+                            <th>Matched Skills</th>
+                            <th>Missing Skills</th>
+                            <th>Details</th>
                         </tr>
-
                     </thead>
-
-                    <tbody id="resultsTable">
-                    </tbody>
-
+                    <tbody id="resultsTable"></tbody>
                 </table>
-
             </div>
-
         </div>
-
     </div>
 
-
     <script src="script.js"></script>
-
 </body>
 </html>

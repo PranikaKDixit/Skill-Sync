@@ -105,9 +105,22 @@ SKILLS = {
     "oop", "object-oriented programming", "functional programming",
     "data structures", "algorithms", "system design",
     "design patterns", "solid", "dry", "kiss",
+
+    "streamlit", "gradio", "langchain", "huggingface", "transformers",
+    "mlflow", "dbt", "snowflake", "bigquery", "looker", "tableau",
+    "power bi", "figma", "sketch", "hibernate", "maven", "gradle",
+    "cloud computing", "api", "monitoring"
 }
 
 SKILL_ALIASES = {
+     "tf2": "tensorflow",
+    "pt": "pytorch",
+    "golang": "go",
+    "hf": "huggingface",
+    "powerbi": "power bi",
+    "aws cloud": "aws",
+    "google cloud platform": "gcp",
+
     # React variations
     "reactjs": "react",
     "react.js": "react",

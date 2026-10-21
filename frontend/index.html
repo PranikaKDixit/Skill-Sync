@@ -3,38 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal - Resume Matcher</title>
-
+    <title>Student Portal - SkillSync</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <div class="container">
 
         <header>
-            <h1>Student Portal</h1>
+            <h1>SkillSync — Student Portal</h1>
             <p>Check how well your resume matches a job description.</p>
-
-            <a href="recruiter.html" class="nav-link">
-                Go to Recruiter Portal →
-            </a>
+            <a href="recruiter.html" class="nav-link">Go to Recruiter Portal →</a>
         </header>
 
         <div class="card">
-
             <h2>Upload Resume</h2>
-
-            <input
-                type="file"
-                id="resumeFile"
-                accept=".pdf"
-            >
-
+            <input type="file" id="resumeFile" accept=".pdf">
             <p id="fileName" class="file-name"></p>
 
             <h2>Job Description</h2>
-
             <textarea
                 id="jobDescription"
                 placeholder="Paste job description here..."
@@ -54,6 +40,9 @@
             <!-- Error -->
             <div id="errorMessage" class="error hidden"></div>
 
+            <!-- Warning -->
+            <div id="warningMessage" class="warning hidden"></div>
+
             <!-- Result -->
             <div id="result" class="result hidden">
 
@@ -62,16 +51,30 @@
                 <div class="score">
                     <span id="matchScore">0%</span>
                 </div>
+                <p class="score-label">Similarity Score (not a hiring probability)</p>
 
-                <p>Resume Match Score</p>
+                <!-- Breakdown -->
+                <div id="breakdownSection" class="breakdown-section">
+                    <h3>Score Breakdown</h3>
+                    <div id="breakdownBars"></div>
+                </div>
+
+                <!-- Matched Skills -->
+                <div id="matchedSection" class="skills-section hidden">
+                    <h3>✅ Matched Skills</h3>
+                    <div id="matchedSkills" class="skill-tags"></div>
+                </div>
+
+                <!-- Missing Skills -->
+                <div id="missingSection" class="skills-section hidden">
+                    <h3>❌ Missing Skills</h3>
+                    <div id="missingSkills" class="skill-tags"></div>
+                </div>
 
             </div>
-
         </div>
-
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>

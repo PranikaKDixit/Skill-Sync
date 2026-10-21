@@ -1,0 +1,1211 @@
+id,resume_profile,jd_profile,resume_text,jd_text,human_score
+1,python_backend,senior_python,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",93.8
+2,python_backend,frontend_engineer,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",9.6
+3,python_backend,data_scientist_jd,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",15.5
+4,python_backend,devops_sre,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",22.5
+5,python_backend,java_backend,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",70.9
+6,python_backend,mobile_dev_jd,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",10.8
+7,python_backend,fullstack_jd,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",65.7
+8,python_backend,ml_engineer_jd,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",20.6
+9,python_backend,cloud_engineer,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",21.5
+10,python_backend,intern_jd,"SKILLS
+Python, Django, Flask, PostgreSQL, Redis, Docker, Git, REST API, Linux
+EXPERIENCE
+Backend Developer at TechCorp (2021-2024)
+- Built RESTful APIs using Django REST Framework serving 1M+ requests daily
+- Designed PostgreSQL database schemas and optimized slow queries
+- Deployed microservices using Docker and CI/CD pipelines
+EDUCATION
+B.Tech Computer Science, NIT Trichy (2017-2021)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",28.4
+11,react_frontend,senior_python,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",17.9
+12,react_frontend,frontend_engineer,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",100
+13,react_frontend,data_scientist_jd,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",16.3
+14,react_frontend,devops_sre,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",11.9
+15,react_frontend,java_backend,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",10.7
+16,react_frontend,mobile_dev_jd,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",14.6
+17,react_frontend,fullstack_jd,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",65.0
+18,react_frontend,ml_engineer_jd,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",21.5
+19,react_frontend,cloud_engineer,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",11.3
+20,react_frontend,intern_jd,"SKILLS
+JavaScript, React, TypeScript, HTML, CSS, Redux, Webpack, Jest, Figma
+EXPERIENCE
+Frontend Developer at DesignHub (2022-2024)
+- Built responsive SPAs using React and TypeScript
+- Implemented state management with Redux Toolkit
+- Improved Lighthouse performance score from 45 to 92
+EDUCATION
+B.Tech IT, VIT Vellore (2018-2022)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",31.9
+21,data_scientist,senior_python,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",20.3
+22,data_scientist,frontend_engineer,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",0
+23,data_scientist,data_scientist_jd,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",90.3
+24,data_scientist,devops_sre,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",14.9
+25,data_scientist,java_backend,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",23.6
+26,data_scientist,mobile_dev_jd,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",9.1
+27,data_scientist,fullstack_jd,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",14.0
+28,data_scientist,ml_engineer_jd,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",63.6
+29,data_scientist,cloud_engineer,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",23.4
+30,data_scientist,intern_jd,"SKILLS
+Python, Pandas, NumPy, scikit-learn, TensorFlow, SQL, Matplotlib, Jupyter, Statistics
+EXPERIENCE
+Data Scientist at AnalyticsCo (2021-2024)
+- Built customer churn prediction model with 94% accuracy using scikit-learn
+- Developed ETL pipelines processing 10M+ records daily with Pandas
+- Created interactive dashboards for stakeholder reporting
+EDUCATION
+M.Tech Data Science, IIT Hyderabad (2019-2021)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",23.9
+31,devops_engineer,senior_python,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",25.5
+32,devops_engineer,frontend_engineer,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",4.5
+33,devops_engineer,data_scientist_jd,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",0
+34,devops_engineer,devops_sre,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",95.1
+35,devops_engineer,java_backend,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",3.7
+36,devops_engineer,mobile_dev_jd,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",18.0
+37,devops_engineer,fullstack_jd,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",22.5
+38,devops_engineer,ml_engineer_jd,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",18.9
+39,devops_engineer,cloud_engineer,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",81.5
+40,devops_engineer,intern_jd,"SKILLS
+Docker, Kubernetes, AWS, Terraform, Jenkins, Linux, Bash, Prometheus, Grafana
+EXPERIENCE
+DevOps Engineer at CloudFirst (2020-2024)
+- Managed Kubernetes clusters with 200+ pods on AWS EKS
+- Automated infrastructure provisioning using Terraform
+- Set up CI/CD pipelines with Jenkins reducing deployment time by 60%
+EDUCATION
+B.Tech Computer Science, BITS Pilani (2016-2020)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",8.5
+41,java_enterprise,senior_python,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",54.3
+42,java_enterprise,frontend_engineer,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",14.3
+43,java_enterprise,data_scientist_jd,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",11.9
+44,java_enterprise,devops_sre,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",23.4
+45,java_enterprise,java_backend,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",100
+46,java_enterprise,mobile_dev_jd,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",13.8
+47,java_enterprise,fullstack_jd,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",43.7
+48,java_enterprise,ml_engineer_jd,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",26.6
+49,java_enterprise,cloud_engineer,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",12.1
+50,java_enterprise,intern_jd,"SKILLS
+Java, Spring Boot, Hibernate, MySQL, Maven, JUnit, Kafka, Microservices
+EXPERIENCE
+Software Engineer at BankTech (2020-2024)
+- Developed microservices architecture using Spring Boot and Kafka
+- Implemented event-driven processing handling 500K transactions daily
+- Wrote comprehensive unit tests with JUnit achieving 90% coverage
+EDUCATION
+B.Tech Computer Science, DTU Delhi (2016-2020)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",32.6
+51,mobile_developer,senior_python,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",17.2
+52,mobile_developer,frontend_engineer,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",15.0
+53,mobile_developer,data_scientist_jd,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",9.0
+54,mobile_developer,devops_sre,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",29.7
+55,mobile_developer,java_backend,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",15.7
+56,mobile_developer,mobile_dev_jd,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",91.2
+57,mobile_developer,fullstack_jd,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",29.4
+58,mobile_developer,ml_engineer_jd,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",22.4
+59,mobile_developer,cloud_engineer,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",15.0
+60,mobile_developer,intern_jd,"SKILLS
+Flutter, Dart, React Native, Firebase, REST API, Git, Android, iOS
+EXPERIENCE
+Mobile Developer at AppWorks (2022-2024)
+- Built cross-platform mobile apps using Flutter with 100K+ downloads
+- Integrated Firebase for authentication, push notifications, and analytics
+- Published 5 apps on both Google Play Store and Apple App Store
+EDUCATION
+B.Tech ECE, SRM Chennai (2018-2022)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",23.2
+61,fullstack_mern,senior_python,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",59.9
+62,fullstack_mern,frontend_engineer,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",60.2
+63,fullstack_mern,data_scientist_jd,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",5.0
+64,fullstack_mern,devops_sre,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",12.6
+65,fullstack_mern,java_backend,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",51.7
+66,fullstack_mern,mobile_dev_jd,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",5.3
+67,fullstack_mern,fullstack_jd,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",100
+68,fullstack_mern,ml_engineer_jd,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",18.9
+69,fullstack_mern,cloud_engineer,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",14.6
+70,fullstack_mern,intern_jd,"SKILLS
+JavaScript, React, Node.js, Express, MongoDB, TypeScript, Docker, GraphQL
+EXPERIENCE
+Full Stack Developer at StartupXYZ (2021-2024)
+- Built end-to-end SaaS platform using MERN stack serving 50K users
+- Designed GraphQL API layer reducing frontend data fetching by 40%
+- Implemented real-time features using WebSockets and Redis
+EDUCATION
+B.Tech Computer Science, IIIT Bangalore (2017-2021)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",38.7
+71,ml_engineer,senior_python,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",25.6
+72,ml_engineer,frontend_engineer,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",35.2
+73,ml_engineer,data_scientist_jd,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",70.6
+74,ml_engineer,devops_sre,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",17.9
+75,ml_engineer,java_backend,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",6.5
+76,ml_engineer,mobile_dev_jd,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",4.3
+77,ml_engineer,fullstack_jd,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",24.8
+78,ml_engineer,ml_engineer_jd,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",95.5
+79,ml_engineer,cloud_engineer,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",28.8
+80,ml_engineer,intern_jd,"SKILLS
+Python, PyTorch, TensorFlow, scikit-learn, MLflow, Docker, AWS SageMaker, NLP
+EXPERIENCE
+ML Engineer at DeepTech (2021-2024)
+- Trained and deployed NLP models for sentiment analysis using PyTorch
+- Built ML pipeline with MLflow for experiment tracking and model versioning
+- Deployed models on AWS SageMaker serving 10K predictions per minute
+EDUCATION
+M.Tech AI, IISc Bangalore (2019-2021)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",22.5
+81,cloud_architect,senior_python,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",20.2
+82,cloud_architect,frontend_engineer,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",8.7
+83,cloud_architect,data_scientist_jd,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",1.7
+84,cloud_architect,devops_sre,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",64.7
+85,cloud_architect,java_backend,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",6.5
+86,cloud_architect,mobile_dev_jd,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",14.3
+87,cloud_architect,fullstack_jd,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",26.7
+88,cloud_architect,ml_engineer_jd,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",22.6
+89,cloud_architect,cloud_engineer,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",100
+90,cloud_architect,intern_jd,"SKILLS
+AWS, Azure, GCP, Terraform, Kubernetes, Docker, Python, Networking, Security
+EXPERIENCE
+Cloud Architect at InfraScale (2019-2024)
+- Designed multi-cloud architecture across AWS, Azure, and GCP
+- Migrated legacy monolith to microservices on Kubernetes
+- Reduced cloud infrastructure costs by 35% through optimization
+EDUCATION
+B.Tech Computer Science, IIT Roorkee (2015-2019)","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",17.8
+91,fresh_graduate,senior_python,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Senior Python Developer needed with 4+ years of experience.
+Required: Python, Django, PostgreSQL, Docker, REST APIs, Git.
+Preferred: AWS, Redis, Celery, CI/CD.
+You will build scalable backend services and mentor junior developers.",40.2
+92,fresh_graduate,frontend_engineer,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Frontend Engineer to build modern web interfaces.
+Required: JavaScript, React, TypeScript, HTML, CSS.
+Preferred: Redux, Webpack, Jest, Figma, accessibility.
+You will work closely with designers to implement pixel-perfect UIs.",34.9
+93,fresh_graduate,data_scientist_jd,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Data Scientist to drive data-driven decision making.
+Required: Python, Pandas, scikit-learn, SQL, Statistics.
+Preferred: TensorFlow, deep learning, A/B testing, Tableau.
+You will build predictive models and present insights to leadership.",40.4
+94,fresh_graduate,devops_sre,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","DevOps/SRE Engineer to maintain cloud infrastructure.
+Required: Docker, Kubernetes, AWS, Linux, CI/CD.
+Preferred: Terraform, Prometheus, Grafana, Python scripting.
+You will ensure 99.99% uptime and automate deployment pipelines.",14.3
+95,fresh_graduate,java_backend,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Java Backend Developer for enterprise applications.
+Required: Java, Spring Boot, MySQL, Hibernate, REST APIs.
+Preferred: Kafka, microservices, JUnit, Maven, Docker.
+You will build high-throughput transaction processing systems.",29.4
+96,fresh_graduate,mobile_dev_jd,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Mobile App Developer for cross-platform applications.
+Required: Flutter or React Native, REST APIs, Git.
+Preferred: Firebase, Android, iOS, app store deployment.
+You will build consumer-facing mobile apps with millions of users.",25.4
+97,fresh_graduate,fullstack_jd,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Full Stack Developer for SaaS product.
+Required: JavaScript, React, Node.js, MongoDB, REST APIs.
+Preferred: TypeScript, Docker, GraphQL, AWS.
+You will own features end-to-end from database to UI.",49.6
+98,fresh_graduate,ml_engineer_jd,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","ML Engineer to build and deploy production ML systems.
+Required: Python, PyTorch or TensorFlow, scikit-learn, Docker.
+Preferred: MLflow, AWS SageMaker, NLP, computer vision.
+You will take models from research to production at scale.",28.0
+99,fresh_graduate,cloud_engineer,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Cloud Engineer to design and manage cloud infrastructure.
+Required: AWS, Docker, Kubernetes, Terraform, Linux.
+Preferred: Azure, GCP, Python, networking, security.
+You will build scalable, secure, and cost-effective cloud solutions.",38.3
+100,fresh_graduate,intern_jd,"SKILLS
+C, C++, Python, HTML, CSS, JavaScript, SQL, Git, Data Structures
+EXPERIENCE
+Intern at WebDev Solutions (Summer 2023)
+- Built a student management portal using HTML, CSS, and JavaScript
+- Created REST API endpoints using Python Flask
+PROJECTS
+Library Management System using C++ and file handling
+EDUCATION
+B.Tech Computer Science, ABC University (2020-2024) CGPA: 7.8","Software Engineering Intern (6 months).
+Required: Python or Java, basic data structures, Git.
+Preferred: HTML, CSS, SQL, any web framework.
+You will work on real projects with mentorship from senior engineers.",73.4

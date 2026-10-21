@@ -1,411 +1,131 @@
-from typing import Annotated
+"""
+SkillSync Backend — FastAPI server.
+Handles resume upload, JD matching (baseline + enhanced).
+"""
+import os
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.openapi.utils import get_openapi
+from typing import Optional
 
-import os
 import sys
-import uuid
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-# Add project root to Python path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
-
-# Import from actual modules (no copies!)
 from ml.matching_engine import calculate_match
 from pdf_parsing.pdf_parser import extract_text_from_pdf
 
-
-app = FastAPI(
-    title="SkillSync Resume Matching API",
-    description="API for matching multiple resumes against a job description",
-    version="1.0.0"
-)
-
-# ... rest of the file stays the same
-app.openapi_version = "3.0.3"
-
-def custom_openapi():
-    if app.openapi_schema:
-        return app.openapi_schema
-
-    openapi_schema = get_openapi(
-        title=app.title,
-        version=app.version,
-        description=app.description,
-        routes=app.routes,
-    )
-
-    # Fix Swagger UI file upload schema
-    try:
-        body_schema = openapi_schema["components"]["schemas"][
-            "Body_match_bulk_match_bulk_post"
-        ]
-
-        body_schema["properties"]["resume_files"]["items"] = {
-            "type": "string",
-            "format": "binary"
-        }
-
-    except KeyError:
-        pass
-
-    openapi_schema["openapi"] = "3.0.3"
-
-    app.openapi_schema = openapi_schema
-    return app.openapi_schema
-
-
-app.openapi = custom_openapi
-
-# -------------------------
-# CORS
-# -------------------------
+app = FastAPI(title="SkillSync API", version="2.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-
-    # Vite usually runs on 5173
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000"
-    ],
-
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
 
-# -------------------------
-# Upload folder
-# -------------------------
 
-UPLOAD_DIR = "uploads"
+@app.get("/health")
+def health():
+    return {"status": "ok", "version": "2.0.0"}
 
-os.makedirs(
-    UPLOAD_DIR,
-    exist_ok=True
-)
-
-
-# -------------------------
-# Root route
-# -------------------------
-
-@app.get("/")
-def root():
-
-    return {
-        "message": "SkillSync Resume Matching Backend is running"
-    }
-
-
-# -------------------------
-# MATCH BULK
-# -------------------------
-
-@app.post("/match-bulk")
-async def match_bulk(
-    resume_files: Annotated[list[UploadFile], File(...)],
-    job_description: Annotated[str, Form(...)]
-):
-
-    # -------------------------
-    # 1. Validate files
-    # -------------------------
-
-    if not resume_files:
-
-        raise HTTPException(
-            status_code=400,
-            detail="No resume files uploaded"
-        )
-
-
-    # -------------------------
-    # 2. Validate JD
-    # -------------------------
-
-    if not job_description.strip():
-
-        raise HTTPException(
-            status_code=400,
-            detail="Job description is required"
-        )
-
-
-    results = []
-
-
-    # -------------------------
-    # 3. Process every resume
-    # -------------------------
-
-    for file in resume_files:
-
-        # -------------------------
-        # Check file type
-        # -------------------------
-
-        if file.content_type != "application/pdf":
-
-            results.append({
-                "filename": file.filename,
-                "status": "failed",
-                "error": "File must be a PDF"
-            })
-
-            continue
-
-
-        # -------------------------
-        # Generate unique filename
-        # -------------------------
-
-        unique_name = f"{uuid.uuid4()}_{file.filename}"
-
-        file_path = os.path.join(
-            UPLOAD_DIR,
-            unique_name
-        )
-
-
-        try:
-
-            # -------------------------
-            # 4. Save PDF temporarily
-            # -------------------------
-
-            file_content = await file.read()
-
-            with open(file_path, "wb") as buffer:
-
-                buffer.write(file_content)
-
-
-            # -------------------------
-            # 5. Extract resume text
-            # -------------------------
-
-            resume_text = extract_text_from_pdf(
-                file_path
-            )
-
-
-            if not resume_text:
-
-                raise Exception(
-                    "Could not extract text from PDF"
-                )
-
-
-            # -------------------------
-            # 6. Calculate match
-            # -------------------------
-
-            match_result = calculate_match(
-                resume_text,
-                job_description
-            )
-
-
-            # -------------------------
-            # 7. Store result
-            # -------------------------
-
-            results.append({
-
-                "filename": file.filename,
-
-                "score": match_result["score"],
-
-                "matched_skills":
-                    match_result["matched_skills"],
-
-                "missing_skills":
-                    match_result["missing_skills"],
-
-                "status": "success"
-            })
-
-
-        except Exception as e:
-
-            print(
-                f"Error processing {file.filename}: {e}"
-            )
-
-            results.append({
-
-                "filename": file.filename,
-
-                "status": "failed",
-
-                "error": str(e)
-            })
-
-
-        finally:
-
-            # -------------------------
-            # 8. Delete temporary PDF
-            # -------------------------
-
-            if os.path.exists(file_path):
-
-                os.remove(file_path)
-
-
-    # -------------------------
-    # 9. Sort successful results
-    # -------------------------
-
-    results.sort(
-        key=lambda x: x.get("score", -1),
-        reverse=True
-    )
-
-
-    # -------------------------
-    # 10. Add ranking
-    # -------------------------
-
-    rank = 1
-
-    for result in results:
-
-        if result["status"] == "success":
-
-            result["rank"] = rank
-
-            rank += 1
-
-
-    # -------------------------
-    # 11. Return response
-    # -------------------------
-
-    return {
-
-        "total_resumes": len(resume_files),
-
-        "processed": len([
-            r for r in results
-            if r["status"] == "success"
-        ]),
-
-        "failed": len([
-            r for r in results
-            if r["status"] == "failed"
-        ]),
-
-        "results": results
-    }
-
-# -------------------------
-# MATCH SINGLE (For Student Portal)
-# -------------------------
 
 @app.post("/match-single")
 async def match_single(
-    resume_file: Annotated[UploadFile, File(...)],
-    job_description: Annotated[str, Form(...)]
+    resume_file: UploadFile = File(...),
+    job_description: str = Form(...),
+    mode: str = Form("baseline"),
 ):
-    """
-    Match a single resume against a job description.
-    Used by the Student Portal.
-    """
+    # Validate file size
+    content = await resume_file.read()
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(400, "File too large (max 5MB)")
 
-    # -------------------------
-    # 1. Validate file
-    # -------------------------
+    # Validate PDF magic bytes
+    if not content[:5].startswith(b"%PDF"):
+        raise HTTPException(400, "Not a valid PDF file")
 
-    if not resume_file:
-        raise HTTPException(
-            status_code=400,
-            detail="No resume file uploaded"
-        )
+    # Parse PDF (now returns sections too)
+    parsed = extract_text_from_pdf(content)
 
-    # -------------------------
-    # 2. Check file type
-    # -------------------------
+    if parsed["status"] == "error":
+        raise HTTPException(500, f"PDF parsing failed: {parsed['error']}")
 
-    if resume_file.content_type != "application/pdf":
-        raise HTTPException(
-            status_code=400,
-            detail="File must be a PDF"
-        )
-
-    # -------------------------
-    # 3. Validate JD
-    # -------------------------
-
-    if not job_description.strip():
-        raise HTTPException(
-            status_code=400,
-            detail="Job description is required"
-        )
-
-    # -------------------------
-    # 4. Generate unique filename
-    # -------------------------
-
-    unique_name = f"{uuid.uuid4()}_{resume_file.filename}"
-    file_path = os.path.join(UPLOAD_DIR, unique_name)
-
-    try:
-        # -------------------------
-        # 5. Save PDF temporarily
-        # -------------------------
-
-        file_content = await resume_file.read()
-        with open(file_path, "wb") as buffer:
-            buffer.write(file_content)
-
-        # -------------------------
-        # 6. Extract resume text
-        # -------------------------
-
-        resume_text = extract_text_from_pdf(file_path)
-
-        if not resume_text:
-            raise HTTPException(
-                status_code=400,
-                detail="Could not extract text from PDF"
-            )
-
-        # -------------------------
-        # 7. Calculate match
-        # -------------------------
-
-        match_result = calculate_match(resume_text, job_description)
-
-        # -------------------------
-        # 8. Return result
-        # -------------------------
-
+    if parsed["status"] == "empty":
         return {
-            "match_score": match_result["score"],
-            "matched_skills": match_result["matched_skills"],
-            "missing_skills": match_result["missing_skills"]
+            "score": 0,
+            "breakdown": {},
+            "matched_skills": [],
+            "missing_skills": [],
+            "mode": mode,
+            "warning": parsed["error"],
         }
 
-    except HTTPException:
-        raise
+    # Calculate match (pass sections for enhanced mode)
+    result = calculate_match(
+        resume_text=parsed["text"],
+        jd_text=job_description,
+        mode=mode,
+        resume_sections=parsed.get("sections"),
+    )
 
-    except Exception as e:
-        print(f"Error processing {resume_file.filename}: {e}")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Error processing resume: {str(e)}"
+    return result
+
+
+@app.post("/match-bulk")
+async def match_bulk(
+    resume_files: list[UploadFile] = File(...),
+    job_description: str = Form(...),
+    mode: str = Form("baseline"),
+):
+    results = []
+    for rf in resume_files:
+        content = await rf.read()
+        if len(content) > MAX_FILE_SIZE:
+            results.append({
+                "filename": rf.filename,
+                "score": 0,
+                "error": "File too large",
+            })
+            continue
+
+        if not content[:5].startswith(b"%PDF"):
+            results.append({
+                "filename": rf.filename,
+                "score": 0,
+                "error": "Not a valid PDF",
+            })
+            continue
+
+        parsed = extract_text_from_pdf(content)
+
+        if parsed["status"] == "error":
+            results.append({
+                "filename": rf.filename,
+                "score": 0,
+                "error": parsed["error"],
+            })
+            continue
+
+        if parsed["status"] == "empty":
+            results.append({
+                "filename": rf.filename,
+                "score": 0,
+                "warning": parsed["error"],
+                "breakdown": {},
+                "matched_skills": [],
+                "missing_skills": [],
+            })
+            continue
+
+        match_result = calculate_match(
+            resume_text=parsed["text"],
+            jd_text=job_description,
+            mode=mode,
+            resume_sections=parsed.get("sections"),
         )
+        match_result["filename"] = rf.filename
+        results.append(match_result)
 
-    finally:
-        # -------------------------
-        # 9. Delete temporary PDF
-        # -------------------------
-
-        if os.path.exists(file_path):
-            os.remove(file_path)
+    return {"results": results}

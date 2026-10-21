@@ -3,3 +3,4 @@ scipy
 scikit-learn
 pandas
 matplotlib
+sentence-transformers>=2.2.0
