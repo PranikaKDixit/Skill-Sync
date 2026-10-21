@@ -21,7 +21,6 @@ app.add_middleware(
 
 MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
 
-
 @app.get("/health")
 def health():
     return {"status": "ok", "version": "2.0.0"}
